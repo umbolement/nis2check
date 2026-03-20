@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { evaluateQuickCheck, type QuickCheckAnswers, type AssessmentResult, type RiskLevel } from "@/lib/nis2-data";
 
 function Shield() {
@@ -58,6 +58,78 @@ const riskBarColors: Record<RiskLevel, string> = {
   low: "bg-blue-500",
   none: "bg-green-500",
 };
+
+function EmailCapture({ riskLevel, sector }: { riskLevel: RiskLevel; sector: string }) {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!email) return;
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, riskLevel, sector }),
+      });
+      if (res.ok) {
+        setStatus("success");
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  if (status === "success") {
+    return (
+      <div className="bg-white rounded-xl border border-success/30 p-6 sm:p-8 text-center">
+        <div className="w-10 h-10 rounded-full bg-success/10 text-success flex items-center justify-center mx-auto text-lg font-bold">
+          ✓
+        </div>
+        <h3 className="mt-3 font-semibold text-primary">Vielen Dank!</h3>
+        <p className="mt-1 text-sm text-text-secondary">
+          Wir benachrichtigen Sie, sobald die vollständige Betroffenheitsanalyse verfügbar ist.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-white rounded-xl border border-border p-6 sm:p-8">
+      <h2 className="text-lg font-bold text-primary">NIS2-Updates erhalten</h2>
+      <p className="mt-1 text-sm text-text-secondary">
+        Erfahren Sie als Erstes, wenn die vollständige Betroffenheitsanalyse verfügbar ist
+        und erhalten Sie wichtige NIS2-Updates.
+      </p>
+      <form onSubmit={handleSubmit} className="mt-4 flex gap-3">
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="ihre@firma.de"
+          required
+          className="flex-1 px-4 py-2.5 rounded-lg border border-border text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent"
+        />
+        <button
+          type="submit"
+          disabled={status === "loading"}
+          className="px-5 py-2.5 bg-accent hover:bg-accent/90 text-white rounded-lg text-sm font-semibold transition-colors disabled:opacity-50 shrink-0"
+        >
+          {status === "loading" ? "..." : "Benachrichtigen"}
+        </button>
+      </form>
+      {status === "error" && (
+        <p className="mt-2 text-xs text-danger">Fehler beim Speichern. Bitte versuchen Sie es erneut.</p>
+      )}
+      <p className="mt-3 text-xs text-text-secondary/60">
+        Kein Spam. Nur relevante NIS2-Updates. Jederzeit abbestellbar.
+      </p>
+    </div>
+  );
+}
 
 function ResultContent() {
   const params = useSearchParams();
@@ -164,6 +236,9 @@ function ResultContent() {
               ))}
             </ul>
           </div>
+
+          {/* Email Capture */}
+          <EmailCapture riskLevel={result.riskLevel} sector={answers.sector} />
 
           {/* CTA: Full Assessment */}
           <div className="bg-gradient-to-br from-primary to-primary-light rounded-xl p-6 sm:p-8 text-white">
