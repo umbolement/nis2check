@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://nis2check.de"),
   title: "NIS2 Check — Ist Ihr Unternehmen betroffen?",
   description:
     "Kostenloser NIS2-Schnellcheck: Prüfen Sie in 2 Minuten, ob Ihr Unternehmen unter die NIS2-Richtlinie fällt. Basierend auf den offiziellen EU- und BSI-Kriterien.",

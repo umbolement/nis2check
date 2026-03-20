@@ -91,7 +91,7 @@ function EmailCapture({ riskLevel, sector }: { riskLevel: RiskLevel; sector: str
         </div>
         <h3 className="mt-3 font-semibold text-primary">Vielen Dank!</h3>
         <p className="mt-1 text-sm text-text-secondary">
-          Wir benachrichtigen Sie, sobald die vollständige Betroffenheitsanalyse verfügbar ist.
+          Wir informieren Sie über wichtige NIS2-Entwicklungen und Gesetzesänderungen.
         </p>
       </div>
     );
@@ -101,8 +101,8 @@ function EmailCapture({ riskLevel, sector }: { riskLevel: RiskLevel; sector: str
     <div className="bg-white rounded-xl border border-border p-6 sm:p-8">
       <h2 className="text-lg font-bold text-primary">NIS2-Updates erhalten</h2>
       <p className="mt-1 text-sm text-text-secondary">
-        Erfahren Sie als Erstes, wenn die vollständige Betroffenheitsanalyse verfügbar ist
-        und erhalten Sie wichtige NIS2-Updates.
+        Erhalten Sie wichtige NIS2-Updates, Gesetzesänderungen und Handlungsempfehlungen
+        direkt in Ihr Postfach.
       </p>
       <form onSubmit={handleSubmit} className="mt-4 flex gap-3">
         <input
@@ -261,9 +261,12 @@ function ResultContent() {
                 </li>
               ))}
             </ul>
-            <div className="mt-6 inline-flex items-center gap-2 bg-white/10 text-white/80 px-5 py-2.5 rounded-lg text-sm font-semibold cursor-default">
-              Bald verfügbar — Einmalig €29
-            </div>
+            <Link
+              href="/assessment"
+              className="mt-6 inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors"
+            >
+              Vollanalyse starten — Kostenlos
+            </Link>
           </div>
 
           {/* Disclaimer */}

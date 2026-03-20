@@ -313,7 +313,7 @@ export default function Home() {
                 <div className="absolute -top-3 left-6 bg-accent text-white text-xs font-semibold px-3 py-1 rounded-full">
                   Empfohlen
                 </div>
-                <div className="text-sm font-medium text-accent uppercase tracking-wider">Einmalig €29</div>
+                <div className="text-sm font-medium text-accent uppercase tracking-wider">Kostenlos</div>
                 <div className="mt-2 text-3xl font-bold text-primary">Vollanalyse</div>
                 <p className="mt-3 text-text-secondary text-sm">
                   Detaillierte Betroffenheitsanalyse mit Maßnahmenplan
@@ -333,9 +333,12 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <div className="mt-8 w-full inline-flex items-center justify-center gap-2 bg-accent/10 text-accent px-6 py-3 rounded-lg font-semibold cursor-default">
-                  Bald verfügbar
-                </div>
+                <Link
+                  href="/assessment"
+                  className="mt-8 w-full inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent/90 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+                >
+                  Vollanalyse starten
+                </Link>
               </div>
             </div>
           </div>
@@ -386,8 +389,9 @@ export default function Home() {
               <Shield />
               <span className="font-semibold">NIS2<span className="text-accent-light">Check</span></span>
             </div>
-            <div className="text-sm">
-              Basierend auf EU-Richtlinie 2022/2555 und NIS2UmsuCG
+            <div className="flex items-center gap-4 text-sm">
+              <Link href="/impressum" className="hover:text-text-on-dark transition-colors">Impressum</Link>
+              <Link href="/datenschutz" className="hover:text-text-on-dark transition-colors">Datenschutz</Link>
             </div>
           </div>
         </div>
