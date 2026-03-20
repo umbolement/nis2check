@@ -100,11 +100,11 @@ const faqs = [
   },
   {
     q: "Wie genau ist dieser Schnellcheck?",
-    a: "Der Schnellcheck basiert auf den offiziellen EU-Kriterien und gibt eine erste Einschätzung. Für eine rechtlich belastbare Bewertung empfehlen wir die vollständige Betroffenheitsanalyse oder die Konsultation eines spezialisierten Beraters.",
+    a: "Der Schnellcheck basiert auf den offiziellen EU-Kriterien und gibt eine erste Einschätzung. Für eine umfassendere Bewertung nutzen Sie unsere kostenlose 25-Fragen-Vollanalyse. Für eine rechtlich verbindliche Bewertung empfehlen wir die Konsultation eines spezialisierten Beraters.",
   },
   {
     q: "Ist der Schnellcheck wirklich kostenlos?",
-    a: "Ja, der 5-Fragen-Schnellcheck ist vollständig kostenlos. Für eine detaillierte Analyse mit Maßnahmenplan bieten wir die Vollständige Betroffenheitsanalyse an.",
+    a: "Ja, sowohl der 5-Fragen-Schnellcheck als auch die vollständige 25-Fragen-Betroffenheitsanalyse sind kostenlos. Keine Registrierung erforderlich.",
   },
 ];
 
