@@ -9,6 +9,7 @@ import {
   type FullAssessmentResult,
   type CategoryScore,
 } from "@/lib/assessment-questions";
+import { Footer } from "@/components/footer";
 
 function Shield() {
   return (
@@ -161,6 +162,7 @@ function ResultView({ result }: { result: FullAssessmentResult }) {
           </div>
         </div>
       </main>
+      <Footer variant="minimal" />
     </div>
   );
 }
@@ -294,6 +296,7 @@ export default function AssessmentPage() {
           </div>
         </div>
       </main>
+      <Footer variant="minimal" />
     </div>
   );
 }

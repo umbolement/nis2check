@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { sectors, digitalServiceOptions } from "@/lib/nis2-data";
+import { Footer } from "@/components/footer";
 
 const totalSteps = 5;
 
@@ -407,6 +408,7 @@ export default function Schnellcheck() {
           </p>
         </div>
       </main>
+      <Footer variant="minimal" />
     </div>
   );
 }

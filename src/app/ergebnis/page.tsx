@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Suspense, useState } from "react";
 import { evaluateQuickCheck, type QuickCheckAnswers, type AssessmentResult, type RiskLevel } from "@/lib/nis2-data";
+import { Footer } from "@/components/footer";
 
 function Shield() {
   return (
@@ -293,6 +294,7 @@ function ResultContent() {
           </div>
         </div>
       </main>
+      <Footer variant="minimal" />
     </div>
   );
 }
