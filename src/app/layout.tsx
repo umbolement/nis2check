@@ -47,6 +47,55 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
       <body className="min-h-screen flex flex-col bg-bg text-text">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "WebApplication",
+                  name: "NIS2Check",
+                  url: "https://nis2check.de",
+                  description: "Kostenloser NIS2-Schnellcheck und Vollanalyse für Unternehmen in Deutschland.",
+                  applicationCategory: "BusinessApplication",
+                  operatingSystem: "Web",
+                  offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
+                  inLanguage: "de",
+                },
+                {
+                  "@type": "FAQPage",
+                  mainEntity: [
+                    {
+                      "@type": "Question",
+                      name: "Was ist NIS2?",
+                      acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Die NIS2-Richtlinie (EU 2022/2555) ist die überarbeitete EU-Regulierung für Cybersicherheit. Sie erweitert den Kreis betroffener Unternehmen massiv und verschärft die Anforderungen an Risikomanagement, Incident-Reporting und Geschäftsleitungs-Haftung.",
+                      },
+                    },
+                    {
+                      "@type": "Question",
+                      name: "Wer ist von NIS2 betroffen?",
+                      acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Unternehmen mit mindestens 50 Mitarbeitern ODER €10 Mio. Jahresumsatz in einem der 18 regulierten Sektoren. Bestimmte digitale Dienste sind unabhängig von der Größe betroffen.",
+                      },
+                    },
+                    {
+                      "@type": "Question",
+                      name: "Was passiert bei Nicht-Einhaltung von NIS2?",
+                      acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Bußgelder bis zu €10 Mio. oder 2% des weltweiten Jahresumsatzes. Zudem haftet die Geschäftsleitung persönlich.",
+                      },
+                    },
+                  ],
+                },
+              ],
+            }),
+          }}
+        />
         {children}
       </body>
     </html>
