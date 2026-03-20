@@ -153,9 +153,15 @@ function ResultView({ result }: { result: FullAssessmentResult }) {
           </p>
 
           <div className="flex gap-3 justify-center pt-4 pb-8">
+            <button
+              onClick={() => window.print()}
+              className="px-5 py-2.5 rounded-lg bg-accent hover:bg-accent/90 text-white text-sm font-semibold transition-colors print:hidden"
+            >
+              Ergebnis als PDF speichern
+            </button>
             <Link
               href="/"
-              className="px-5 py-2.5 rounded-lg border border-border text-sm font-medium text-text-secondary hover:bg-white transition-colors"
+              className="px-5 py-2.5 rounded-lg border border-border text-sm font-medium text-text-secondary hover:bg-white transition-colors print:hidden"
             >
               Zur Startseite
             </Link>
